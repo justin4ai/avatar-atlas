@@ -1,29 +1,22 @@
-# avatar-taxonomy
+# 3D Avatar Atlas — Taxonomy
 
-Interactive map of 3D-avatar research (2015–present). Curated papers across NeRF, 3DGS, mesh, feed-forward, relightable, diffusion. Filter, see the field re-cluster.
+Welcome to the **3D Avatar Atlas**, an interactive map of research on 3D human
+avatars. The atlas covers NeRF, 3D Gaussian Splatting, mesh-based avatars,
+parametric body/face/hand priors, relightable and animatable humans, and the
+methods that connect them.
 
-## Run
+Filter along five axes — representation, input modality, pipeline, capability,
+and target — and switch between a force-directed graph and a temporal tree to
+see how the field has evolved from 2018 through today.
 
-```
-npm install
-npm run dev
-npm run build
-```
+**Live site:** https://avatar-taxonomy.vercel.app
 
-## Data
+![](assets/taxonomy1.png)
 
-`src/data/papers.ts` — one typed object per paper. Schema in `src/types.ts`.
+![](assets/taxonomy2.png)
 
-## Crawler
+## Feedback
 
-Weekly pipeline in `scripts/`:
-- `arxiv.ts` — fetch candidates
-- `tag.ts` — Claude Haiku tagger
-- `run.ts` — orchestrate, write `src/data/candidates.ts`
-
-```
-npm run crawl:dry             # arxiv only
-ANTHROPIC_API_KEY=... npm run crawl -- --from=20240101 --max=100
-```
-
-GH Action in `.github/workflows/crawl.yml` runs every Monday 03:00 UTC and opens a PR if there are new candidates. See `DEPLOY.md`.
+Found a wrong tag, a missing paper, or a bug? Please open an issue at
+[github.com/justin4ai/avatar-taxonomy/issues](https://github.com/justin4ai/avatar-taxonomy/issues)
+or email [justinahn@kaist.ac.kr](mailto:justinahn@kaist.ac.kr).
