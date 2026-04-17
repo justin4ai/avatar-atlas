@@ -39,7 +39,7 @@ function FeedbackBar() {
         Found a wrong tag or missing paper?
       </span>
       <a
-        href="https://github.com/justin4ai/avatar-taxonomy/issues"
+        href="https://github.com/justin4ai/avatar-atlas/issues"
         target="_blank"
         rel="noreferrer"
         className="inline-flex items-center gap-1.5 hover:text-white transition"

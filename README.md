@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/avatar-taxonomy-logo.png" alt="Avatar Atlas" width="560" />
+  <img src="assets/avatar-atlas-logo.png" alt="Avatar Atlas" width="560" />
 </p>
 
 <p align="center">
@@ -19,9 +19,9 @@ Filter along five axes — representation, input modality, pipeline, capability,
 and target — and switch between a force-directed graph and a temporal tree to
 see how the field has evolved from 2018 through today.
 
-![](assets/taxonomy1.png)
+![](assets/atlas1.png)
 
-![](assets/taxonomy2.png)
+![](assets/atlas2.png)
 
 ## 🤗 Feedback
 

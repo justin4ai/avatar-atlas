@@ -12,9 +12,9 @@ dist
 dist-ssr
 *.local
 assets/*
-!assets/taxonomy1.png
-!assets/taxonomy2.png
-!assets/avatar-taxonomy-logo.png
+!assets/atlas1.png
+!assets/atlas2.png
+!assets/avatar-atlas-logo.png
 
 # Crawler artifacts / secrets
 scripts/.crawl-raw.json
