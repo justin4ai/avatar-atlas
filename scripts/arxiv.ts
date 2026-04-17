@@ -4,18 +4,71 @@ import type { ArxivCandidate } from './schema';
 const API = 'http://export.arxiv.org/api/query';
 
 export const QUERY_FAMILIES: string[] = [
+  // -- core avatar / human terms --
   'ti:avatar AND cat:cs.CV',
-  'abs:"gaussian splatting" AND abs:avatar',
+  'abs:"digital human" AND cat:cs.CV',
   'abs:"head avatar" AND cat:cs.CV',
   'abs:"body avatar" AND cat:cs.CV',
-  'abs:"relightable" AND (abs:avatar OR abs:human OR abs:face)',
-  'abs:"animatable" AND (abs:gaussian OR abs:nerf) AND cat:cs.CV',
-  'abs:"human reconstruction" AND abs:gaussian',
-  'abs:FLAME AND abs:gaussian AND cat:cs.CV',
-  'abs:SMPL AND abs:gaussian AND cat:cs.CV',
+  'abs:"full-body avatar" AND cat:cs.CV',
+  'abs:"hand avatar" AND cat:cs.CV',
+  'abs:"portrait" AND (abs:"gaussian" OR abs:"nerf" OR abs:"3d")',
   'abs:"codec avatar" AND cat:cs.CV',
-  'abs:"talking head" AND (abs:gaussian OR abs:nerf) AND cat:cs.CV',
+
+  // -- 3D Gaussian / 4D Gaussian --
+  'abs:"gaussian splatting" AND abs:avatar',
+  'abs:"gaussian splatting" AND abs:human',
+  'abs:"gaussian avatar"',
+  'abs:"gaussian head"',
+  'abs:"4D gaussian" AND (abs:human OR abs:avatar OR abs:face)',
+  'abs:"animatable gaussian"',
+  'abs:"drivable gaussian" AND cat:cs.CV',
+  'abs:"relightable gaussian"',
+
+  // -- NeRF / neural fields --
   'abs:"neural radiance" AND abs:human AND cat:cs.CV',
+  'abs:"neural radiance" AND abs:face AND cat:cs.CV',
+  'abs:"animatable nerf"',
+  'abs:"neural head" AND cat:cs.CV',
+
+  // -- parametric priors / rigging --
+  'abs:FLAME AND (abs:gaussian OR abs:nerf OR abs:diffusion) AND cat:cs.CV',
+  'abs:SMPL AND (abs:gaussian OR abs:nerf) AND cat:cs.CV',
+  'abs:SMPLX AND cat:cs.CV',
+  'abs:MANO AND abs:hand AND cat:cs.CV',
+  'abs:"linear blend skinning" AND (abs:gaussian OR abs:nerf)',
+
+  // -- capabilities --
+  'abs:"relightable" AND (abs:avatar OR abs:human OR abs:face)',
+  'abs:"animatable" AND (abs:gaussian OR abs:nerf OR abs:diffusion) AND cat:cs.CV',
+  'abs:"reenactment" AND (abs:gaussian OR abs:nerf) AND cat:cs.CV',
+  'abs:"expression" AND abs:avatar AND cat:cs.CV',
+
+  // -- diffusion / generative avatars --
+  'abs:"diffusion" AND abs:avatar AND cat:cs.CV',
+  'abs:"diffusion" AND abs:"3d human" AND cat:cs.CV',
+  'abs:"text-to-avatar"',
+  'abs:"image-to-avatar"',
+  'abs:"one-shot" AND abs:avatar AND cat:cs.CV',
+  'abs:"single image" AND abs:avatar AND cat:cs.CV',
+
+  // -- feed-forward / large reconstruction models --
+  'abs:"feed-forward" AND (abs:avatar OR abs:human) AND cat:cs.CV',
+  'abs:"large reconstruction" AND abs:human',
+  'abs:"generalizable" AND abs:avatar AND cat:cs.CV',
+
+  // -- reconstruction pipelines --
+  'abs:"human reconstruction" AND (abs:gaussian OR abs:nerf)',
+  'abs:"3D human" AND abs:gaussian',
+  'abs:"clothed human" AND cat:cs.CV',
+  'abs:"garment" AND abs:avatar',
+  'abs:"hair" AND (abs:gaussian OR abs:avatar)',
+
+  // -- talking head / video --
+  'abs:"talking head" AND (abs:gaussian OR abs:nerf OR abs:diffusion) AND cat:cs.CV',
+  'abs:"talking face" AND cat:cs.CV',
+  'abs:"video avatar" AND cat:cs.CV',
+  'abs:"video portrait" AND cat:cs.CV',
+  'abs:"lip sync" AND (abs:gaussian OR abs:nerf OR abs:3d)',
 ];
 
 export interface FetchOptions {

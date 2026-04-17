@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
-import { PAPERS } from '../../data/papers';
+import { ALL_PAPERS as PAPERS } from '../../data';
 import { matchesFilter } from '../../lib/filter';
 import { buildGraph, type GraphLink, type GraphNode } from '../../lib/graph';
 import { INPUT_COLOR, REP_COLOR, REP_GLOW, rgba } from '../../lib/colors';

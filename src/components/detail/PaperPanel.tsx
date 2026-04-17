@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Code2, ExternalLink, X } from 'lucide-react';
-import { PAPERS } from '../../data/papers';
+import { ALL_PAPERS as PAPERS } from '../../data';
 import { useFilterStore } from '../../store/useFilterStore';
 import { AXES, valueLabel } from '../../data/taxonomy';
 import { rgba } from '../../lib/colors';

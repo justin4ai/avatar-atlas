@@ -1,7 +1,7 @@
 import { Search, Network, GitBranch } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useFilterStore } from '../../store/useFilterStore';
-import { PAPERS } from '../../data/papers';
+import { ALL_PAPERS as PAPERS } from '../../data';
 import { matchesFilter } from '../../lib/filter';
 import clsx from 'clsx';
 import type { LayoutMode } from '../../types';

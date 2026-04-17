@@ -5,6 +5,7 @@ import { fetchAllFamilies } from './arxiv';
 import { tagPaper } from './tag';
 import type { TaggedCandidate } from './schema';
 import { PAPERS } from '../src/data/papers';
+import { CANDIDATES } from '../src/data/candidates';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -40,7 +41,7 @@ function pad(n: number) {
 
 function existingArxivIds(): Set<string> {
   const s = new Set<string>();
-  for (const p of PAPERS) {
+  for (const p of [...PAPERS, ...CANDIDATES]) {
     if (!p.arxiv) continue;
     const m = p.arxiv.match(/abs\/([^\/?#v]+)/);
     if (m) s.add(m[1]);
@@ -53,7 +54,7 @@ async function main() {
   console.log(`[crawl] from=${args.from} dry=${args.dry} max=${args.max}`);
   console.log(`[crawl] existing papers: ${PAPERS.length}`);
 
-  const raw = await fetchAllFamilies({ fromDate: args.from, maxPerQuery: 80 });
+  const raw = await fetchAllFamilies({ fromDate: args.from, maxPerQuery: 200 });
   const known = existingArxivIds();
   const fresh = raw.filter((r) => !known.has(r.id));
   console.log(

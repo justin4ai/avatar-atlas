@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { PAPERS } from '../../data/papers';
+import { ALL_PAPERS as PAPERS } from '../../data';
 import { matchesFilter } from '../../lib/filter';
 import { useFilterStore } from '../../store/useFilterStore';
 import { AXES, YEAR_MAX, YEAR_MIN } from '../../data/taxonomy';

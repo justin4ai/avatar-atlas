@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "crawl": "tsx scripts/run.ts",
-    "crawl:dry": "tsx scripts/run.ts --dry"
+    "crawl:dry": "tsx scripts/run.ts --dry",
+    "crawl:filter": "tsx scripts/filter.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
