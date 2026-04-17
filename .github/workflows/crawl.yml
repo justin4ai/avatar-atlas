@@ -1,0 +1,68 @@
+name: Weekly avatar-paper crawl
+
+on:
+  schedule:
+    # Every Monday 03:00 UTC.
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      from:
+        description: 'Start date YYYYMMDD (default: last 60 days)'
+        required: false
+      max:
+        description: 'Max papers to tag (cost cap)'
+        required: false
+        default: '120'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Crawl + tag
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.from }}" ]; then ARGS="$ARGS --from=${{ inputs.from }}"; fi
+          if [ -n "${{ inputs.max }}" ]; then ARGS="$ARGS --max=${{ inputs.max }}"; fi
+          npm run crawl -- $ARGS
+
+      - name: Count new candidates
+        id: count
+        run: |
+          if [ -f src/data/candidates.ts ]; then
+            N=$(grep -c "^  {" src/data/candidates.ts || echo 0)
+            echo "count=$N" >> "$GITHUB_OUTPUT"
+          else
+            echo "count=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open PR with new candidates
+        if: steps.count.outputs.count != '0'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/avatar-candidates
+          commit-message: 'chore(data): refresh avatar candidates (${{ steps.count.outputs.count }} entries)'
+          title: 'Avatar candidates: ${{ steps.count.outputs.count }} new from arXiv'
+          body: |
+            Automated weekly crawl by `.github/workflows/crawl.yml`.
+
+            - Source: arXiv (see `scripts/arxiv.ts` for query families)
+            - Tagger: Claude `claude-haiku-4-5` (see `scripts/tag.ts`)
+            - File changed: `src/data/candidates.ts`
+
+            **Reviewer action:** skim the entries, move the ones worth keeping into `src/data/papers.ts` (adjust tags / `builds_on` / tier as needed), delete the rest. Close this PR without merging if nothing is worth keeping — the next run will regenerate the file.
+          add-paths: src/data/candidates.ts

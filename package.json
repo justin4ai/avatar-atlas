@@ -1,0 +1,49 @@
+{
+  "name": "avatar-taxanomy",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "crawl": "tsx scripts/run.ts",
+    "crawl:dry": "tsx scripts/run.ts --dry"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "fuse.js": "^7.3.0",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-force-graph-2d": "^1.29.1",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/forms": "^0.5.11",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "fast-xml-parser": "^5.6.0",
+    "globals": "^17.4.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.19",
+    "tsx": "^4.21.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.0",
+    "vite": "^8.0.4"
+  }
+}
