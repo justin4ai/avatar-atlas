@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://avatar-taxonomy.vercel.app">
+  <a href="https://3d-avatar-atlas.vercel.app">
     <img src="https://img.shields.io/badge/AVATAR_ATLAS-22d3ee?style=for-the-badge&labelColor=0a0a10&logo=vercel&logoColor=white" alt="AVATAR ATLAS" />
   </a>
 </p>
